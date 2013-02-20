@@ -1,0 +1,12 @@
+package by.zloy.test;
+
+/**
+ * @author EugenKozlov
+ */
+public class TestOR {
+    public static void main(String[] args) {
+        TestOR a = null;
+        TestOR b = null;
+        System.out.println(a != null | b != null);
+    }
+}

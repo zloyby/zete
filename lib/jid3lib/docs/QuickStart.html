@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>Introduction to tags</title>
+</head>
+
+<body lang="EN-US">
+<h1>MP3 Tag java library Quick Start</h1>
+<br>
+True to the title, this is <span style="font-style: italic;">quick. </span>There
+are many more read/write/edit options if you go through the JavaDocs or through the code.<br>
+
+<h2>Introduction to tags</h2>
+There are three types of tags found in an MP3 file found in this order:
+<ol>
+    <li>ID3v2</li>
+    <li><i>&lt;MP3 Data&gt;</i><mp3 data=""></mp3></li>
+    <li>Lyrics3</li>
+    <li>ID3v1</li>
+</ol>
+In addition, there are different versions for each tag:
+<ol>
+    <li>ID3v2
+        <ul>
+            <li>ID3v2.2 </li>
+            <li>ID3v2.3 </li>
+            <li>ID3v2.4 </li>
+        </ul>
+    </li>
+    <li>Lyrics3
+        <ul>
+            <li>Lyrics3v1 </li>
+            <li>Lyrics3v2 </li>
+        </ul>
+    </li>
+    <li>ID3v1
+        <ul>
+            <li>ID3v1.0 </li>
+            <li>ID3v1.1 </li>
+        </ul>
+    </li>
+</ol>
+
+<h2>Compiling:</h2>
+If you have ant, there is a build.xml. Type "ant help" for build options.<br>
+If you get from CVS, you can use IntelliJ and read jid3lib.ipr<br>
+
+<h2>Reading:<br>
+</h2>
+<pre>    File sourceFile;
+    MP3File mp3file = new MP3File(sourceFile);
+</pre>
+You can also read specific tags:
+<pre>    ID3v1_1 tag = new ID3v1_1(sourceFile);
+    ID3v1 tag = new ID3v1(sourceFile);
+    ID3v2_4 tag = new ID3v2_4(sourceFile);
+    ID3v2_3 tag = new ID3v2_3(sourceFile);
+    ID3v2_2 tag = new ID3v2_2(sourceFile);
+    Lyrics3v2 tag = new Lyrics3v2(sourceFile);
+    Lyrics3v1 tag = new Lyrics3v1(sourceFile);
+</pre>
+
+<h2>Creating:</h2>
+<pre>    MP3File mp3file = new MP3File();
+    TagOptionSingleton.getInstance().setDefaultSaveMode(TagConstant.MP3_FILE_SAVE_OVERWRITE);
+
+    // setup id3v1
+    id3v1.setAlbum("albumTitle");
+
+    // setup id3v2
+    AbstractID3v2Frame frame;
+    AbstractID3v2FrameBody frameBody;
+    frameBody = new FrameBodyTALB((byte) 0, "albumTitle");
+    frame = new ID3v2_4Frame(frameBody);
+    id3v2.setFrame(frame);
+
+    // setup lyrics3v2
+    Lyrics3v2Field field;
+    AbstractLyrics3v2FieldBody fieldBody;
+    fieldBody = new FieldBodyEAL("albumTitle");
+    field = new Lyrics3v2Field(fieldBody);
+    lyrics3.setField(field);
+
+    // setup filename tag
+    frameBody = new FrameBodyTALB((byte) 0, "albumTitle");
+    frame = new ID3v2_4Frame(frameBody);
+    filenameId3.setFrame(frame);
+    TagOptionSingleton.getInstance().setFilenameTagSave(true);
+</pre>
+Things to note:
+<ul>
+    <li>The default save mode is "write but do not delete." This means each field in the object will be
+        saved, but existing fields in the file on disk will not be deleted. The other two are "only append"
+        or "delete and write from scratch."</li>
+</ul>
+
+<h2>Editing Part 1:</h2>
+
+There are convience methods defined in AbstractMP3Tag to edit common data fields.
+Not all tags have all fields listed here.
+
+<pre>    public abstract String getSongTitle();
+    public abstract String getLeadArtist();
+    public abstract String getAlbumTitle();
+    public abstract String getYearReleased();
+    public abstract String getSongComment();
+    public abstract String getSongGenre();
+    public abstract String getTrackNumberOnAlbum();
+    public abstract String getSongLyric();
+    public abstract String getAuthorComposer();
+    public abstract void setSongTitle(String songTitle);
+    public abstract void setLeadArtist(String leadArtist);
+    public abstract void setAlbumTitle(String albumTitle);
+    public abstract void setYearReleased(String yearReleased);
+    public abstract void setSongComment(String songComment);
+    public abstract void setSongGenre(String songGenre);
+    public abstract void setTrackNumberOnAlbum(String trackNumberOnAlbum);
+    public abstract void setSongLyric(String songLyrics);
+    public abstract void setAuthorComposer(String authorComposer);
+</pre>
+
+<h2>Editing Part 2:</h2>
+If the field you want is not listed above, you can use these methods.
+<pre>    id3v1 = mp3file.getID3v1Tag();
+    id3v2 = mp3file.getID3v2Tag();
+    lyrics3 = mp3file.getLyrics3Tag();
+</pre>
+ID3v1 tags have fixed fields and use accessor methods to change it's
+properties.
+<p>ID3v2 tags have multiple <i>frames</i>. Use this to set the title of
+    the tag.</p>
+<pre>    frame = id3v2.getFrame("TIT2");
+    ((FrameBodyTIT2) frame.getBody()).setText("New Title");
+</pre>
+
+<p>Lyrics3 tags have multiple <i>fields</i>. Use this to set the title of
+    the tag.</p>
+<pre>    field = lyrics3.getField("ETT");
+    ((FieldBodyETT) field.getBody()).setTitle("New Title");
+</pre>
+
+<h2>Writing: </h2>
+<pre>    mp3file.save();
+</pre>
+You can also save each individual tag through each tags' save() method.<br>
+<br>
+
+<h2>Reference:<br>
+</h2>
+Here is a mapping of the commonly used fields<b><br>
+    <br>
+</b>
+<table border="1">
+<tbody>
+<tr>
+    <td><b>Field Name</b></td>
+    <td><b>ID3v1</b></td>
+    <td><b>ID3v1.1</b></td>
+    <td><b>ID3v2.2</b></td>
+    <td><b>ID3v2.3</b></td>
+    <td><b>ID3v2.4</b></td>
+    <td><b>Lyrics3v1</b></td>
+    <td><b>Lyrics3v2</b></td>
+</tr>
+<tr>
+    <td>Song Title</td>
+    <td>title</td>
+    <td>title</td>
+    <td>TT2</td>
+    <td>TIT2</td>
+    <td>TIT2</td>
+    <td>--</td>
+    <td>ETT</td>
+</tr>
+<tr>
+    <td>Lead Artist</td>
+    <td>artist</td>
+    <td>artist</td>
+    <td>TP1</td>
+    <td>TPE1</td>
+    <td>TPE1</td>
+    <td>--</td>
+    <td>EAR</td>
+</tr>
+<tr>
+    <td>Album Title</td>
+    <td>album</td>
+    <td>album</td>
+    <td>TAL</td>
+    <td>TALB</td>
+    <td>TALB</td>
+    <td>--</td>
+    <td>EAL</td>
+</tr>
+<tr>
+    <td>Year Released</td>
+    <td>year</td>
+    <td>year</td>
+    <td>TYE</td>
+    <td>TYER</td>
+    <td>TDRC</td>
+    <td>--</td>
+    <td>--</td>
+</tr>
+<tr>
+    <td>Comment</td>
+    <td>comment</td>
+    <td>comment</td>
+    <td>COM</td>
+    <td>COMM</td>
+    <td>COMM</td>
+    <td>--</td>
+    <td>INF</td>
+</tr>
+<tr>
+    <td>Song Genre</td>
+    <td>genre</td>
+    <td>genre</td>
+    <td>TCO</td>
+    <td>TCON</td>
+    <td>TCON</td>
+    <td>--</td>
+    <td>--</td>
+</tr>
+<tr>
+    <td>Track number on album</td>
+    <td>--</td>
+    <td>track</td>
+    <td>TRK</td>
+    <td>TRCK</td>
+    <td>TRCK</td>
+    <td>--</td>
+    <td>--</td>
+</tr>
+<tr>
+    <td>Lyrics</td>
+    <td>--</td>
+    <td>--</td>
+    <td>SYL or ULT</td>
+    <td>SYLT or USLT</td>
+    <td>SYLT or USLT</td>
+    <td>lyric</td>
+    <td>LYR</td>
+</tr>
+<tr>
+    <td>Author / Composer</td>
+    <td>--</td>
+    <td>--</td>
+    <td>TCM</td>
+    <td>TCOM</td>
+    <td>TCOM</td>
+    <td>--</td>
+    <td>AUT</td>
+</tr>
+</tbody>
+</table>
+
+
+</body></html>

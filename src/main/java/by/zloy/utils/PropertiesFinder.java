@@ -1,6 +1,5 @@
 package by.zloy.utils;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,8 +22,10 @@ public class PropertiesFinder {
     public static boolean isAppend;
     public static String fileName;
 
-    /** The logger. */
-	private static Logger logger = LogWrapper.getLogger();
+    /**
+     * The logger.
+     */
+    private static Logger logger = LogWrapper.getLogger();
 
     public static void loadTwisterProperties() {
         Properties properties = new Properties();
@@ -38,8 +39,7 @@ public class PropertiesFinder {
         currentLanguage = properties.getProperty("LANGUAGE");
         quantity = Integer.valueOf(properties.getProperty("QUANTITY_PEOPLE"));
         breakTime = Integer.valueOf(properties.getProperty("BREAK_TIME"));
-        numMillisecondsToSleep = Integer.valueOf(properties.getProperty(
-                "NUM_MILLISECONDS_TO_SLEEP"));
+        numMillisecondsToSleep = Integer.valueOf(properties.getProperty("NUM_MILLISECONDS_TO_SLEEP"));
         isTimer = Boolean.valueOf(properties.getProperty("IS_TIMER"));
         isLoggingFile = Boolean.valueOf(properties.getProperty("LOG_FILE_USE"));
         isAppend = Boolean.valueOf(properties.getProperty("LOG_FILE_APPEND"));
@@ -49,7 +49,6 @@ public class PropertiesFinder {
             currentFileUri = PropertiesFinder.class.getClassLoader().getResource(
                     "languages/" + currentLanguage + ".lang.xml").toURI();
         } catch (URISyntaxException e) {
-            logger.severe("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n\r\n!!!!!!!!!!! ");
             logger.severe(e.getLocalizedMessage());
         }
     }

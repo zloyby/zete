@@ -1,4 +1,4 @@
-package by.zloy.utils;
+package by.zloy.twister;
 
 import java.io.IOException;
 import java.net.URI;

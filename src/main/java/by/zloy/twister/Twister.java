@@ -3,9 +3,6 @@
  */
 package by.zloy.twister;
 
-import by.zloy.utils.Timer;
-import by.zloy.utils.TwisterPropertiesFinder;
-
 /**
  * The Class Twister.
  */

@@ -8,9 +8,9 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 /**
- * The Class PropertiesFinder.
+ * The Class TwisterPropertiesFinder.
  */
-public class PropertiesFinder {
+public class TwisterPropertiesFinder {
 
     public static String currentLanguage = null;
     public static URI currentFileUri = null;
@@ -29,7 +29,7 @@ public class PropertiesFinder {
 
     public static void loadTwisterProperties() {
         Properties properties = new Properties();
-        URL url = PropertiesFinder.class.getClassLoader().getResource("twister.properties");
+        URL url = TwisterPropertiesFinder.class.getClassLoader().getResource("twister.properties");
         try {
             properties.load(url.openStream());
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public class PropertiesFinder {
         fileName = properties.getProperty("LOG_FILE_NAME");
 
         try {
-            currentFileUri = PropertiesFinder.class.getClassLoader().getResource(
+            currentFileUri = TwisterPropertiesFinder.class.getClassLoader().getResource(
                     "languages/" + currentLanguage + ".lang.xml").toURI();
         } catch (URISyntaxException e) {
             logger.severe(e.getLocalizedMessage());

@@ -30,7 +30,8 @@ public class Timer implements Runnable {
      */
     private int time2run;
 
-    private Timer() {}
+    private Timer() {
+    }
 
     /**
      * Constructor.
@@ -55,9 +56,9 @@ public class Timer implements Runnable {
                 return;
             }
             object.startTimerThread();
-            if (PropertiesFinder.isTimer) {
+            if (TwisterPropertiesFinder.isTimer) {
                 try {
-                    Thread.sleep(PropertiesFinder.numMillisecondsToSleep);
+                    Thread.sleep(TwisterPropertiesFinder.numMillisecondsToSleep);
                 } catch (InterruptedException e) {
                     logger.severe(e.getLocalizedMessage());
                 }

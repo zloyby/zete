@@ -3,26 +3,25 @@
  */
 package by.zloy.twister;
 
-import by.zloy.twister.TwisterCounter;
-import by.zloy.utils.PropertiesFinder;
 import by.zloy.utils.Timer;
+import by.zloy.utils.TwisterPropertiesFinder;
 
 /**
  * The Class Twister.
  */
 public class Twister {
 
-	/**
-	 * Main function of twister.
-	 * 
-	 * @param args command-arguments
-	 */
-	public static void main(final String[] args) {
-        PropertiesFinder.loadTwisterProperties();
+    /**
+     * Main function of twister.
+     *
+     * @param args command-arguments
+     */
+    public static void main(final String[] args) {
+        TwisterPropertiesFinder.loadTwisterProperties();
         TwisterCounter twisterThread = new TwisterCounter();
-        Runnable runnable = new Timer(twisterThread, PropertiesFinder.breakTime * PropertiesFinder.quantity);
+        Runnable runnable = new Timer(twisterThread, TwisterPropertiesFinder.breakTime * TwisterPropertiesFinder.quantity);
         Thread thread = new Thread(runnable);
         thread.start();
-	}
+    }
 
 }

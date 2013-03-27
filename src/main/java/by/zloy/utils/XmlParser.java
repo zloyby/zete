@@ -16,33 +16,32 @@ import java.util.logging.Logger;
  */
 public class XmlParser {
 
-    /** The logger. */
-	private static Logger logger = LogWrapper.getLogger();
+    /**
+     * The logger.
+     */
+    private static Logger logger = LogWrapper.getLogger();
 
-	/**
-	 * Parse.
-	 * 
-	 * @param description
-	 *            the description
-	 * @return the string
-	 */
-	public static String parse(String description) {
-		Document doc = parseXmlFile(PropertiesFinder.currentFileUri, false);
-		NodeList list = doc.getElementsByTagName(description);
-		Element element = (Element)list.item(0);
+    /**
+     * Parse.
+     *
+     * @param description the description
+     * @return the string
+     */
+    public static String parse(String description) {
+        Document doc = parseXmlFile(TwisterPropertiesFinder.currentFileUri, false);
+        NodeList list = doc.getElementsByTagName(description);
+        Element element = (Element) list.item(0);
         return element.getAttribute("name");
-	}
-	
-	/**
-	 * Parses the xml file.
-	 * 
-	 * @param file
-	 *            the inputStream
-	 * @param validating
-	 *            the validating
-	 * @return the document
-	 */
-	private static Document parseXmlFile(URI file, boolean validating) {
+    }
+
+    /**
+     * Parses the xml file.
+     *
+     * @param file       the inputStream
+     * @param validating the validating
+     * @return the document
+     */
+    private static Document parseXmlFile(URI file, boolean validating) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setValidating(validating);

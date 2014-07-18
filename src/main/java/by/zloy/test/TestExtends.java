@@ -30,6 +30,7 @@ public class TestExtends {
         public void sout() {
             System.out.println(a);
             System.out.println(b);
+//            System.out.println(b2);
         }
     }
 }

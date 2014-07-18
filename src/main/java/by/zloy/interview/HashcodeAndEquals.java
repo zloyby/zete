@@ -1,16 +1,22 @@
-package by.zloy.certification;
+package by.zloy.interview;
 
 import java.util.HashMap;
 
-public class MyHashcodeImpl {
+/**
+ * Work with hashcode and equals
+ */
+public class HashcodeAndEquals {
 
     public static void main(String a[]) {
 
         HashMap<Price, String> hm = new HashMap<Price, String>();
-        hm.put(new Price("Banana", 20), "Banana");
-        hm.put(new Price("Apple", 40), "Apple");
-        hm.put(new Price("Orange", 30), "Orange");
-        //creating new object to use as key to get value
+        hm.put(new Price("Banana", 20), "Andrew");
+        hm.put(new Price("Apple", 40), "Olya");
+        hm.put(new Price("Orange", 30), "Eugene");
+        hm.put(new Price("Orange", 30), "Lena");
+        hm.put(new Price("Orange", 50), "Dima");
+        hm.put(null, "Vova");
+
         Price key = new Price("Banana", 20);
         System.out.println("Hashcode of the key: " + key.hashCode());
         System.out.println("Value from map: " + hm.get(key));
@@ -27,14 +33,14 @@ public class MyHashcodeImpl {
         }
 
         public int hashCode() {
-            System.out.println("In hashcode");
+            System.out.println("Call hashcode");
             int hashcode = price * 47;
             hashcode += item.hashCode();
             return hashcode;
         }
 
         public boolean equals(Object obj) {
-            System.out.println("In equals");
+            System.out.println("Call equals");
             if (obj instanceof Price) {
                 Price pp = (Price) obj;
                 return (pp.item.equals(this.item) && pp.price == this.price);
@@ -57,10 +63,6 @@ public class MyHashcodeImpl {
 
         public void setPrice(int price) {
             this.price = price;
-        }
-
-        public String toString() {
-            return "item: " + item + "  price: " + price;
         }
     }
 }

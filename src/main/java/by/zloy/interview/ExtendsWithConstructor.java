@@ -1,6 +1,6 @@
-package by.zloy.test;
+package by.zloy.interview;
 
-public class TestExtendsWithConstructor {
+public class ExtendsWithConstructor {
     public static void main(String[] args) {
         A test = new B();
         test.f();

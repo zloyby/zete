@@ -1,14 +1,9 @@
-package by.zloy.certification;
+package by.zloy.interview;
 
 public class SingleNumber {
 
     public static void main(String[] args) {
-        int[] arr = new int[5];
-        arr[0] = 1;
-        arr[1] = 1;
-        arr[2] = 2;
-        arr[3] = 3;
-        arr[4] = 3;
+        int[] arr = {1, 1, 2, 3, 3};
         System.out.println(singleNumber(arr));
 
     }

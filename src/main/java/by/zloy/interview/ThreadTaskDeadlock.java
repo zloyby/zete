@@ -1,6 +1,6 @@
-package by.zloy.certification;
+package by.zloy.interview;
 
-public class MyTask {
+public class ThreadTaskDeadlock {
 
     static class Friend {
         private final String name;

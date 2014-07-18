@@ -2,7 +2,7 @@ package by.zloy.test;
 
 import java.math.BigDecimal;
 
-public class BigDecimalTest {
+public class TestBigDecimal {
     public static void main(String[] args) {
 
         String a = "2303.4250000000004";

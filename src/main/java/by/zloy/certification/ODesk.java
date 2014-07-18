@@ -1,6 +1,6 @@
-package by.zloy.test.odesk;
+package by.zloy.certification;
 
-class MyTest {
+class ODesk {
 
     public static void main(String[] args) {
         lattice_paths(1, 1);

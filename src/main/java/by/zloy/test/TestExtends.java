@@ -28,8 +28,8 @@ public class TestExtends {
 
     class C extends B {
         public void sout() {
-            System.out.print(a);
-            System.out.print(b);
+            System.out.println(a);
+            System.out.println(b);
         }
     }
 }

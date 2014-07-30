@@ -14,11 +14,11 @@ public class OrderMapByValue {
     public static void main(String a[]) {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("Java", 20);
-        map.put("C++", 45);
-        map.put("Java2Novice", 2);
-        map.put("Unix", 67);
-        map.put("MAC", 26);
-        map.put("Why this kolavari", 93);
+        map.put("Android", 20);
+        map.put("Unix", 65);
+        map.put("Mac", 25);
+        map.put("C++", 30);
+        map.put("Why this", 30);
 
         List<Entry<String, Integer>> list = sortByValue(map.entrySet());
 

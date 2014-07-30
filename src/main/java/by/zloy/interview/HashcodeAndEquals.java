@@ -18,7 +18,7 @@ public class HashcodeAndEquals {
         hm.put(null, "Vova");
 
         Price key = new Price("Banana", 20);
-        System.out.println("Hashcode of the key: " + key.hashCode());
+
         System.out.println("Value from map: " + hm.get(key));
     }
 

@@ -17,7 +17,6 @@ public class ExtendsWithConstructor {
         }
     }
 
-
     public static class B extends A {
         public B() {
             System.out.println("Constructor B");

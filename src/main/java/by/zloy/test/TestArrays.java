@@ -1,4 +1,4 @@
-package by.zloy.interview;
+package by.zloy.test;
 
 public class TestArrays {
     public static void main(String[] args) {

@@ -14,7 +14,7 @@ public class HashcodeAndEquals {
         hm.put(new Price("Apple", 40), "Olya");
         hm.put(new Price("Orange", 30), "Eugene");
         hm.put(new Price("Orange", 30), "Lena");
-        hm.put(new Price("Orange", 50), "Dima");
+        hm.put(new Price("Orange", 40), "Dima");
         hm.put(null, "Vova");
 
         Price key = new Price("Banana", 20);

@@ -1,13 +1,9 @@
 package by.zloy.certification;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class OrderMapByValue {
 
@@ -20,23 +16,36 @@ public class OrderMapByValue {
         map.put("C++", 30);
         map.put("Why this", 30);
 
-        List<Entry<String, Integer>> list = sortByValue(map.entrySet());
+        List<String> list = new ArrayList<String>();
+        list.add("Java");
+        list.add("Android");
+        list.add("Unix");
+        list.add("Mac");
+        list.add("C++");
+        list.add("Why this");
 
-        for (Map.Entry<String, Integer> entry : list) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
+        //1-t level
+        List listResult = sortByName(list);
+        System.out.println(listResult);
+        //2-d level
+        Map mapResult1 = sortByValue(map);
+        System.out.println(mapResult1);
+        //3-d level
+        Map mapResult2 = sortByValueAndAfterByName(map);
+        System.out.println(mapResult2);
+
     }
 
-    private static List<Entry<String, Integer>> sortByValue(Set<Entry<String, Integer>> set) {
-
-        List<Entry<String, Integer>> list = new ArrayList<Entry<String, Integer>>(set);
-
-        Collections.sort(list, new Comparator<Entry<String, Integer>>() {
-            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
-
-        return list;
+    private static List sortByName(List<String> list) {
+        return null;
     }
+
+    private static Map sortByValue(Map<String, Integer> map) {
+        return null;
+    }
+
+    private static Map sortByValueAndAfterByName(Map<String, Integer> map) {
+        return null;
+    }
+
 }

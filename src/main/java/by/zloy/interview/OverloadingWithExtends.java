@@ -1,6 +1,7 @@
 package by.zloy.interview;
 
-public class ExtendsWithConstructor {
+public class OverloadingWithExtends {
+
     public static void main(String[] args) {
         A test = new B();
         test.f();

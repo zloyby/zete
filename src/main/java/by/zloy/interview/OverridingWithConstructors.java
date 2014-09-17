@@ -1,14 +1,14 @@
 package by.zloy.interview;
 
-public class OverridingConstructors {
+public class OverridingWithConstructors {
 
     public static class A {
         public A() {
             System.out.println("Constructor A");
-            f();
+            func();
         }
 
-        public void f() {
+        public void func() {
             System.out.println("Parent");
         }
     }
@@ -16,16 +16,17 @@ public class OverridingConstructors {
     public static class B extends A {
         public B() {
             System.out.println("Constructor B");
-            f();
+            func();
         }
 
-        public void f() {
+        public void func() {
             System.out.println("Child");
         }
     }
 
     public static void main(String[] args) {
-        A test = new B();
+        A a = new B();
+        a.func();
     }
 
 }

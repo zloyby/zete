@@ -1,6 +1,6 @@
 package by.zloy.interview;
 
-public class Overriding {
+public class OverridingAndOverloading {
 
     public static class Parent {
 

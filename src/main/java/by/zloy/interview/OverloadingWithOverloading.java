@@ -1,6 +1,6 @@
 package by.zloy.interview;
 
-public class OverloadingWithExtends {
+public class OverloadingWithOverloading {
 
     public static void main(String[] args) {
         A test = new B();

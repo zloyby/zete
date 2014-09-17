@@ -2,30 +2,35 @@ package by.zloy.interview;
 
 public class Overriding {
 
+    public static class Parent {
+
+        public void test() {
+            System.out.println("parent::test");
+        }
+    }
+
+    public static class Child extends Parent {
+
+        public void test() {
+            System.out.println("child::test");
+        }
+    }
+
+    public static class Tester {
+
+        public void test(Parent obj) {
+            System.out.println("Testing parent...");
+            obj.test();
+        }
+
+        public void test(Child obj) {
+            System.out.println("Testing child...");
+            obj.test();
+        }
+    }
+
     public static void main(String[] args) {
-        A test = new B();
-        test.f();
-    }
-
-    public static class A {
-        public A() {
-            System.out.println("Constructor A");
-            f();
-        }
-
-        public void f() {
-            System.out.println("Parent");
-        }
-    }
-
-    public static class B extends A {
-        public B() {
-            System.out.println("Constructor B");
-            f();
-        }
-
-        public void f() {
-            System.out.println("Child");
-        }
+        Parent obj = new Child();
+        new Tester().test(obj);
     }
 }

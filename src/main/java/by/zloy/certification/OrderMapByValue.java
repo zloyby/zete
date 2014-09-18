@@ -8,13 +8,6 @@ import java.util.Map;
 public class OrderMapByValue {
 
     public static void main(String a[]) {
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("Java", 20);
-        map.put("Android", 20);
-        map.put("Unix", 65);
-        map.put("Mac", 25);
-        map.put("C++", 30);
-        map.put("Why this", 30);
 
         List<String> list = new ArrayList<String>();
         list.add("Java");
@@ -23,6 +16,14 @@ public class OrderMapByValue {
         list.add("Mac");
         list.add("C++");
         list.add("Why this");
+
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("Java", 20);
+        map.put("Android", 20);
+        map.put("Unix", 65);
+        map.put("Mac", 25);
+        map.put("C++", 30);
+        map.put("Why this", 30);
 
         //1-t level
         List listResult = sortByName(list);

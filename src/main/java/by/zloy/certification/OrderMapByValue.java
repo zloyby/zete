@@ -29,24 +29,24 @@ public class OrderMapByValue {
         List listResult = sortByName(list);
         System.out.println(listResult);
         //2-d level
-        Map mapResult1 = sortByValue(map);
+        Map mapResult1 = sortByKey(map);
         System.out.println(mapResult1);
         //3-d level
-        Map mapResult2 = sortByValueAndAfterByName(map);
+        Map mapResult2 = sortByValueAndAfterByKey(map);
         System.out.println(mapResult2);
 
     }
 
     private static List sortByName(List<String> list) {
-        return null;
+        return list;
     }
 
-    private static Map sortByValue(Map<String, Integer> map) {
-        return null;
+    private static Map sortByKey(Map<String, Integer> map) {
+        return map;
     }
 
-    private static Map sortByValueAndAfterByName(Map<String, Integer> map) {
-        return null;
+    private static Map sortByValueAndAfterByKey(Map<String, Integer> map) {
+        return map;
     }
 
 }

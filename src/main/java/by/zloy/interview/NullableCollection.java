@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@SuppressWarnings("unchecked")
 public class NullableCollection {
 
     static Map<String, Integer> map = new HashMap();

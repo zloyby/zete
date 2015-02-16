@@ -23,8 +23,8 @@ public class NullableCollection {
         set.add(null);
         list.add(null);
         list.add(null);
-        map.put(null, 1);
-        map.put(null, 2);
+        Object a1 = map.put(null, 1);
+        Object a2 = map.put(null, 2);
 
         System.out.println(map.size());
         System.out.println(list.size());

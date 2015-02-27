@@ -1,6 +1,6 @@
-package by.zloy.interview;
+package by.zloy.test;
 
-public class SingleNumber {
+public class TestXor {
 
     public static void main(String[] args) {
         int[] arr = {1, 1, 2, 3, 3};

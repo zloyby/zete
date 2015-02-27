@@ -1,4 +1,4 @@
-package by.zloy.certification;
+package by.zloy.interview;
 
 import java.util.ArrayList;
 import java.util.HashMap;

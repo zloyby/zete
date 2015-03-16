@@ -1,0 +1,743 @@
+{
+  "version": 3,
+  "nodes": [
+    {
+      "id": "553CFA5F-A0D0-4CB3-A09F-8E9EE544AB9B",
+      "lastModified": "2015-02-16T14:06:24.689+03:00",
+      "name": "Conax",
+      "type": "Project"
+    },
+    {
+      "id": "8A5D0768-DD73-4C7E-8024-0B073235E2C7",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Common API",
+      "type": "Service",
+      "parentId": "553CFA5F-A0D0-4CB3-A09F-8E9EE544AB9B"
+    },
+    {
+      "id": "8A5D0768-DD73-4C7E-8024-0B073235E2C6",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Admin API Contents",
+      "type": "Service",
+      "parentId": "553CFA5F-A0D0-4CB3-A09F-8E9EE544AB9B"
+    },
+    {
+      "id": "8A5D0768-DD73-4C7E-8024-0B073235E2C5",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Admin API",
+      "type": "Service",
+      "parentId": "553CFA5F-A0D0-4CB3-A09F-8E9EE544AB9B"
+    },
+    {
+      "id": "8A5D0768-DD73-4C7E-8024-0B073235E2C4",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Client API",
+      "type": "Service",
+      "parentId": "553CFA5F-A0D0-4CB3-A09F-8E9EE544AB9B"
+    },
+    {
+      "id": "0644475d-d6fc-6d61-94b2-d3f14ec6fe1e",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Update content",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 17af4oe2i521aa4bvio7qv5pmuh0oknq"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "PUT"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'logo':'http://megaicons.net/static/img/icons_sizes/8/178/256/numbers-1-filled-icon.png','hls':'http://5.135.222.70/conax-hls01/conax-hls01.m3u8','smooth':'http://5.135.222.70/conax-mss01/conax-mss01.isml/Manifest','channelId':'100-TV4FaktaXL','scrub':'http://origin01.lab.conax.com/live/thumbs/oxagile_nrk1/','preview':'http://origin01.lab.conax.com/live/thumbs/oxagile_nrk1/','index':2}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/1",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "231ec975-d21f-6eea-2740-be2d94fe1b44",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get users",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer q19dq8254gfn28o694i994evh6p5a06t"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    },
+    {
+      "id": "247f352c-63d9-130c-a763-e6d2e23de478",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Change sequense",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ith9fjuatkrmn5ommrmhfi827n0pdvjm"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "PUT"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'delta':-2}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/1/sequences",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "24b93dc7-a3a4-8e5d-e9dd-0f6e9be30a50",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Logout",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer s14mv561ds9sshpdh6csjlh09ou2avks"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/logout",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C7"
+    },
+    {
+      "id": "2a2d7f8f-09f1-bee2-0467-7140aa7a8dcd",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Update user",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer q19dq8254gfn28o694i994evh6p5a06t"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "PUT"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'username':'test','password':'password_new','description':'description_new','enabled':true,'limit':4}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users/3",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    },
+    {
+      "id": "2c8d1a51-7c1d-1953-c00e-ae5d11c9acc7",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Add user",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 9l83ofltkfpt6b0acop9l8eom83sm66p"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'username':'user@conax.com','password':'password','description':'description','enabled':true,'limit':5}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users/",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    },
+    {
+      "id": "3a454ede-845d-083a-58e2-5ded6a95cfa5",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Delete user",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer q19dq8254gfn28o694i994evh6p5a06t"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users/3",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    },
+    {
+      "id": "5e93b7c1-417f-3d5b-8ebe-d919594532ad",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get devices",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 8m2fb5uajujmth7o5gi2if8cgoos7c6i"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/devices",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C5"
+    },
+    {
+      "id": "60aac955-f728-f64a-1cf3-a1bf4a71b8ea",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get channels",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 8m2fb5uajujmth7o5gi2if8cgoos7c6i"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/devices/0F60608A-CB92-4E30-9B6D-AE0C74C9A46A/channels",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C5"
+    },
+    {
+      "id": "60d5cf21-bd80-8740-3416-fc0ce31106b7",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Validate",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer rovie2mtv299gb2h8jlc76np15i0rrhn"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/validate",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C7"
+    },
+    {
+      "id": "69281e31-24e3-f76e-4cf6-a833f5c8c7ad",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Remove device",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 8m2fb5uajujmth7o5gi2if8cgoos7c6i"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/devices/0F60608A-CB92-4E30-9B6D-AE0C74C9A46A",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C5"
+    },
+    {
+      "id": "6ac401fc-c241-a22e-6b97-d26fa30ee4fa",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get contents paged",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 17af4oe2i521aa4bvio7qv5pmuh0oknq"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/2/0",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "8164da7e-dfd1-021c-cf04-8d1ae69202a9",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Delete content",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 17af4oe2i521aa4bvio7qv5pmuh0oknq"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/1",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "95ade195-f630-d715-9699-baf1d64e09ad",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Login",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": ""
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'username':'admin@conax.com','password':'password'}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/login",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C7"
+    },
+    {
+      "id": "9caabdb0-db5e-6581-7a0b-67789e7f63f8",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Upload epg",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ga199mghv8pon943pbm1t0oammms5sih"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/upload/epg",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "bef56f4f-4b2d-1616-8d4c-a3f4f2d960ef",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get content",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer v46cvncqfpjnvi4duinnca9ugfn0q1u1"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/1",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "cc40410e-c141-52c4-ee26-dd79bc3f0a9f",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get users count",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer q19dq8254gfn28o694i994evh6p5a06t"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users/count",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    },
+    {
+      "id": "d3ece53f-90f5-1fc0-702b-7625264b705c",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Add content",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer v46cvncqfpjnvi4duinnca9ugfn0q1u1"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'logo':'http://megaicons.net/static/img/icons_sizes/8/178/256/numbers-1-filled-icon.png','hls':'http://5.135.222.70/conax-hls01/conax-hls01.m3u8','smooth':'http://5.135.222.70/conax-mss01/conax-mss01.isml/Manifest','channelId':'129-GospelChannelEurope','scrub':'http://origin01.lab.conax.com/live/thumbs/oxagile_nrk1/','preview':'http://origin01.lab.conax.com/live/thumbs/oxagile_nrk1/','index':2}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "dc112d8a-c4a6-9998-916c-38bfa1eb96dd",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get contents count",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 17af4oe2i521aa4bvio7qv5pmuh0oknq"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/count",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "e34b026d-65ad-823a-8a53-92c29013051e",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get channels from epg",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 17af4oe2i521aa4bvio7qv5pmuh0oknq"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/contents/epg",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C6"
+    },
+    {
+      "id": "e5731807-4ba1-55b4-7a4a-f3efd8a7ac4a",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Init new device",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer 8m2fb5uajujmth7o5gi2if8cgoos7c6i"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "POST"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "{'deviceId':'0F60608A-CB92-4E30-9B6D-AE0C74C9A46A','deviceType':'iPad'}",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/api/devices",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C5"
+    },
+    {
+      "id": "eed1aa65-d5db-f47d-89fd-b8081981a431",
+      "lastModified": "2015-02-16T14:06:24.690+03:00",
+      "name": "Get user",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer q19dq8254gfn28o694i994evh6p5a06t"
+        }
+      ],
+      "method": {
+        "requestBody": true,
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "textBody": "",
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "localhost:8080/admin/users/3",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8A5D0768-DD73-4C7E-8024-0B073235E2C4"
+    }
+  ]
+}

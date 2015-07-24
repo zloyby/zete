@@ -9,52 +9,59 @@ public class HashcodeAndEquals {
 
     public static void main(String a[]) {
 
-        HashMap<Price, String> hm = new HashMap<Price, String>();
-        hm.put(new Price("Banana", 20), "Andrew");
-        hm.put(new Price("Apple", 40), "Olya");
-        hm.put(new Price("Orange", 30), "Eugene");
-        hm.put(new Price("Orange", 30), "Lena");
-        hm.put(new Price("Orange", 40), "Dima");
-        hm.put(null, "Vova");
+        HashMap<Product, String> hm = new HashMap<Product, String>();
+        hm.put(new Product("Banana", 1), "Andrew");
+        hm.put(new Product("Orange", 2), "Eugene");
+        hm.put(new Product("Orange", 2), "Lena");
+        hm.put(new Product("Orange", 3), "Dimitry");
+        hm.put(new Product("Apple", 2), "Olga");
+        hm.put(new Product("Apple", 3), "Victor");
+        hm.put(null, "Vladimir");
 
-        Price key = new Price("Orange", 30);
+        Product key = new Product("Orange", 3);
 
         System.out.println("Value from map: " + hm.get(key));
     }
 
-    static class Price {
+    static class Product {
 
-        private String item;
+        private String name;
         private int price;
 
-        public Price(String itm, int pr) {
-            this.item = itm;
+        public Product(String itm, int pr) {
+            this.name = itm;
             this.price = pr;
         }
 
         public int hashCode() {
             System.out.println("Call hashcode");
-            int hashcode = price * 47;
-            hashcode += item.hashCode();
+            int hashcode = 47;
+
+            hashcode = hashcode * price;
+            hashcode += name.hashCode();
+
             return hashcode;
         }
 
         public boolean equals(Object obj) {
             System.out.println("Call equals");
-            if (obj instanceof Price) {
-                Price pp = (Price) obj;
-                return (pp.item.equals(this.item) && pp.price == this.price);
+            if (obj instanceof Product) {
+                Product pp = (Product) obj;
+
+                boolean bPrice = pp.price == this.price;
+                boolean bName = pp.name.equals(this.name);
+                return bPrice && bName;
             } else {
                 return false;
             }
         }
 
-        public String getItem() {
-            return item;
+        public String getName() {
+            return name;
         }
 
-        public void setItem(String item) {
-            this.item = item;
+        public void setName(String name) {
+            this.name = name;
         }
 
         public int getPrice() {

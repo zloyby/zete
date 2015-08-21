@@ -16,13 +16,10 @@ class Parser {
         file << "<!-- Created by TSReader from COOLSTF.com -->"
         file << "<tv generator-info-name=\"TSReader\">"
 
-        //1501-NRK1
-        //17001-NRK1
-        //1039-NRK1 HD
-        //3515-NRK1 HD
+        //'1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD'
 
         def id = 1501220735
-        def array = ['1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD']
+        def array = ['205-MTV', '2607-MTV (S)', '2934-MTV3 HD', '4901-MTV MAX HD']
         array.each {
 
             def name = it.substring(it.indexOf('-') + 1)
@@ -36,6 +33,9 @@ class Parser {
 
             def now = new Date()
             def now1m = new Date()
+
+            now.seconds = 0
+            now1m.seconds = 0
 
             use(TimeCategory) {
                 now = now - 3.hour

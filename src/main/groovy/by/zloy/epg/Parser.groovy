@@ -20,7 +20,7 @@ class Parser {
         //'205-MTV', '2607-MTV (S)', '2934-MTV3 HD', '4901-MTV MAX HD'
 
         def id = 1501220735
-        def array = ['1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD']
+        def array = ['1501-NRK1']
         array.each {
 
             def name = it.substring(it.indexOf('-') + 1)

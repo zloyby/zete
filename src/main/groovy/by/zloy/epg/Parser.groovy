@@ -4,23 +4,29 @@ import groovy.time.TimeCategory
 
 class Parser {
     public static void main(String[] args) {
+        // HOWTO: compile and run by:
+        // groovyc -cp groovy-all-2.4.1.jar Parser.groovy
+        // java -cp groovy-all-2.4.1.jar:. Parser /Users/eugene/Desktop/epg-generate-day.xml 5 5 1000 9999-Oxagile
 
-        File to = new File('/Users/eugene/Desktop/epg-generate-day.xml')
-        generate(to)
+        def to = new File(args[0])
+        //'1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD'
+        //'205-MTV', '2607-MTV (S)', '2934-MTV3 HD', '4901-MTV MAX HD'
+        def minutesLength = Integer.parseInt(args[1])
+        def minutesBetween = Integer.parseInt(args[2])
+        def iterations = Integer.parseInt(args[3])
+        def array = [args[4]]
+
+        generate(to, array, iterations, minutesLength, minutesBetween)
     }
 
-    public static final String FORMAT_EPG_TIMEZONE = "yyyyMMddHHmmss Z"
-
-    static void generate(File file) {
+    static void generate(def file, def array, def iterations, def minutesLength, def minutesBetween) {
         file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
         file << "<!-- Created by TSReader from COOLSTF.com -->"
         file << "<tv generator-info-name=\"TSReader\">"
 
-        //'1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD'
-        //'205-MTV', '2607-MTV (S)', '2934-MTV3 HD', '4901-MTV MAX HD'
+        final def FORMAT_EPG_TIMEZONE = "yyyyMMddHHmmss Z"
+        def id = 1500000000
 
-        def id = 1501220735
-        def array = ['1501-NRK1']
         array.each {
 
             def name = it.substring(it.indexOf('-') + 1)
@@ -31,27 +37,24 @@ class Parser {
                 <signal-info>1.0W 11.372 V 24500 7/8 QPSK, DVB-S</signal-info>
             </channel>"""
 
-
             def now = new Date()
-            def now1m = new Date()
-
+            def next = new Date()
             now.seconds = 0
-            now1m.seconds = 0
-
+            next.seconds = 0
             use(TimeCategory) {
                 now = now - 3.hour
-                now1m = now + 1.minute
+                next = now + minutesLength.minute
             }
 
-            for (int i = 0; i < 24 * 60; i++) {
+            for (int i = 0; i < iterations; i++) {
 
                 use(TimeCategory) {
-                    now = now + 1.minute
-                    now1m = now1m + 1.minute
+                    now = now + minutesLength.minute + minutesBetween.minute
+                    next = next + minutesLength.minute + minutesBetween.minute
                 }
 
                 String datetime1 = now.format(FORMAT_EPG_TIMEZONE)
-                String datetime2 = now1m.format(FORMAT_EPG_TIMEZONE)
+                String datetime2 = next.format(FORMAT_EPG_TIMEZONE)
                 id = id + 10
 
                 file << """
@@ -65,9 +68,6 @@ class Parser {
             }
         }
 
-
-
         file << "</tv>"
-
     }
 }

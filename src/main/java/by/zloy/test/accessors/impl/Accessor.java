@@ -1,6 +1,6 @@
-package by.zloy.test.impl;
+package by.zloy.test.accessors.impl;
 
-import by.zloy.test.api.Exposed;
+import by.zloy.test.accessors.api.Exposed;
 
 public abstract class Accessor {
 

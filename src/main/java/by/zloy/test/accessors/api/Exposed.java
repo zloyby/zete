@@ -1,6 +1,6 @@
-package by.zloy.test.api;
+package by.zloy.test.accessors.api;
 
-import by.zloy.test.impl.Accessor;
+import by.zloy.test.accessors.impl.Accessor;
 
 public final class Exposed {
     static {

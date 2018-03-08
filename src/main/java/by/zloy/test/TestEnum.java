@@ -1,12 +1,12 @@
 package by.zloy.test;
 
 // enum showing Mobile prices
-enum Mobile {
+enum TestEnumMobile {
     Samsung(400), Nokia(250), Motorola(325);
 
     int price;
 
-    Mobile(int p) {
+    TestEnumMobile(int p) {
         price = p;
     }
 
@@ -20,12 +20,12 @@ public class TestEnum {
     public static void main(String args[]) {
 
         System.out.println("CellPhone List:");
-        for (Mobile m : Mobile.values()) {
+        for (TestEnumMobile m : TestEnumMobile.values()) {
             System.out.println(m + " costs " + m.showPrice() + " dollars");
         }
 
-        Mobile ret;
-        ret = Mobile.valueOf("Samsung");
+        TestEnumMobile ret;
+        ret = TestEnumMobile.valueOf("Samsung");
         System.out.println("Selected : " + ret);
     }
 }

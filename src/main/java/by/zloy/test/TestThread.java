@@ -1,12 +1,12 @@
 package by.zloy.test;
 
 public class TestThread {
+    private Object o;
+
     public static void main(String[] args) {
         TestThread thread = new TestThread();
         thread.method();
     }
-
-    private Object o;
 
     public void method() {
         o = new Object();

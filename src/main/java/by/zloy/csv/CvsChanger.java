@@ -5,8 +5,13 @@ import au.com.bytecode.opencsv.CSVWriter;
 import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import by.zloy.utils.PropertiesUtil;
-
-import java.io.*;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -85,44 +90,33 @@ public class CvsChanger {
 
     private static class MyCSVWriter implements Closeable {
         public static final int INITIAL_STRING_SIZE = 128;
-
-        private Writer rawWriter;
-
-        private PrintWriter pw;
-
-        private char separator;
-
-        private char quotechar;
-
-        private char escapechar;
-
-        private String lineEnd;
-
         /**
          * The character used for escaping quotes.
          */
         public static final char DEFAULT_ESCAPE_CHARACTER = '"';
-
         /**
          * The default quote character to use if none is supplied to the
          * constructor.
          */
         public static final char DEFAULT_QUOTE_CHARACTER = '"';
-
         /**
          * The quote constant to use when you wish to suppress all quoting.
          */
         public static final char NO_QUOTE_CHARACTER = '\u0000';
-
         /**
          * The escape constant to use when you wish to suppress all escaping.
          */
         public static final char NO_ESCAPE_CHARACTER = '\u0000';
-
         /**
          * Default line terminator uses platform encoding.
          */
         public static final String DEFAULT_LINE_END = "\n";
+        private Writer rawWriter;
+        private PrintWriter pw;
+        private char separator;
+        private char quotechar;
+        private char escapechar;
+        private String lineEnd;
 
         /**
          * Constructs CSVWriter with supplied separator and quote char.

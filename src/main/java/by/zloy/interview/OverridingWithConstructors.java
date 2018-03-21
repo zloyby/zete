@@ -2,6 +2,11 @@ package by.zloy.interview;
 
 public class OverridingWithConstructors {
 
+    public static void main(String[] args) {
+        A a = new B();
+        a.func();
+    }
+
     public static class A {
         public A() {
             System.out.println("Constructor A");
@@ -22,11 +27,6 @@ public class OverridingWithConstructors {
         public void func() {
             System.out.println("Child");
         }
-    }
-
-    public static void main(String[] args) {
-        A a = new B();
-        a.func();
     }
 
 }

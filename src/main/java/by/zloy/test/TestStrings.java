@@ -8,7 +8,6 @@ package by.zloy.test;
 public class TestStrings {
     public static void main(String[] args) {
 
-
         String fullPathToDir = "/a/b/c/";
         String rootFolder = fullPathToDir.substring(0, fullPathToDir.length() - 1);
         if (rootFolder.length() > 0) {

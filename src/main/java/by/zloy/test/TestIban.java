@@ -17,7 +17,7 @@ public class TestIban {
     private static String fixChecksum(String ibanTemplate) {
         int remainder = checksum(ibanTemplate);
         String pp = padLeft(String.valueOf(98 - remainder), 2, '0');
-        return ibanTemplate.substring(0,2) + pp + ibanTemplate.substring(4);
+        return ibanTemplate.substring(0, 2) + pp + ibanTemplate.substring(4);
     }
 
     private static int checksum(String iban) {

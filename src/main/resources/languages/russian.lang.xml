@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <lang id="russian">
 
-	<color_red name="Красный" />
-	<color_yellow name="Черный" />
-	<color_green name="Зеленый" />
-	<color_blue name="Синий" />
+    <color_red name="Красный"/>
+    <color_yellow name="Черный"/>
+    <color_green name="Зеленый"/>
+    <color_blue name="Синий"/>
 
-	<body_left_hand name="Левую руку" />
-	<body_right_hand name="Правую руку" />
-	<body_left_leg name="Левую ногу" />
-	<body_right_leg name="Правую ногу" />
+    <body_left_hand name="Левую руку"/>
+    <body_right_hand name="Правую руку"/>
+    <body_left_leg name="Левую ногу"/>
+    <body_right_leg name="Правую ногу"/>
 
 </lang>

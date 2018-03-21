@@ -1,6 +1,11 @@
 package by.zloy.interview;
 
 public class Overloading {
+    public static void main(String[] args) {
+        Overloading ot = new Overloading();
+        ot.test(999999999);
+    }
+
     public void test(float param) {
         System.out.println("float: " + param);
     }
@@ -19,10 +24,5 @@ public class Overloading {
 
     public void test(short param) {
         System.out.println("short: " + param);
-    }
-
-    public static void main(String[] args) {
-        Overloading ot = new Overloading();
-        ot.test(999999999);
     }
 }

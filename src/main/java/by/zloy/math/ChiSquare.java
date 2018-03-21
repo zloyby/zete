@@ -1,6 +1,5 @@
 package by.zloy.math;
 
-import org.apache.commons.math3.stat.inference.ChiSquareTest;
 import org.apache.commons.math3.stat.inference.TestUtils;
 
 /**

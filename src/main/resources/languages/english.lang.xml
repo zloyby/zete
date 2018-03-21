@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <lang id="english">
 
-<color_red    name="Red"/>
-<color_yellow name="Yellow"/>
-<color_green  name="Green"/>
-<color_blue   name="Blue"/>
+    <color_red name="Red"/>
+    <color_yellow name="Yellow"/>
+    <color_green name="Green"/>
+    <color_blue name="Blue"/>
 
-<body_left_hand  name="Left hand"/>
-<body_right_hand name="Right hand"/>
-<body_left_leg   name="Left leg"/>
-<body_right_leg  name="Right leg"/>
+    <body_left_hand name="Left hand"/>
+    <body_right_hand name="Right hand"/>
+    <body_left_leg name="Left leg"/>
+    <body_right_leg name="Right leg"/>
 
 </lang>

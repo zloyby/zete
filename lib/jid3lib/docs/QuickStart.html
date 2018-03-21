@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     <title>Introduction to tags</title>
 </head>
 
@@ -14,7 +15,9 @@ are many more read/write/edit options if you go through the JavaDocs or through 
 There are three types of tags found in an MP3 file found in this order:
 <ol>
     <li>ID3v2</li>
-    <li><i>&lt;MP3 Data&gt;</i><mp3 data=""></mp3></li>
+    <li><i>&lt;MP3 Data&gt;</i>
+        <mp3 data=""></mp3>
+    </li>
     <li>Lyrics3</li>
     <li>ID3v1</li>
 </ol>
@@ -22,21 +25,21 @@ In addition, there are different versions for each tag:
 <ol>
     <li>ID3v2
         <ul>
-            <li>ID3v2.2 </li>
-            <li>ID3v2.3 </li>
-            <li>ID3v2.4 </li>
+            <li>ID3v2.2</li>
+            <li>ID3v2.3</li>
+            <li>ID3v2.4</li>
         </ul>
     </li>
     <li>Lyrics3
         <ul>
-            <li>Lyrics3v1 </li>
-            <li>Lyrics3v2 </li>
+            <li>Lyrics3v1</li>
+            <li>Lyrics3v2</li>
         </ul>
     </li>
     <li>ID3v1
         <ul>
-            <li>ID3v1.0 </li>
-            <li>ID3v1.1 </li>
+            <li>ID3v1.0</li>
+            <li>ID3v1.1</li>
         </ul>
     </li>
 </ol>
@@ -91,7 +94,8 @@ Things to note:
 <ul>
     <li>The default save mode is "write but do not delete." This means each field in the object will be
         saved, but existing fields in the file on disk will not be deleted. The other two are "only append"
-        or "delete and write from scratch."</li>
+        or "delete and write from scratch."
+    </li>
 </ul>
 
 <h2>Editing Part 1:</h2>
@@ -151,109 +155,110 @@ Here is a mapping of the commonly used fields<b><br>
     <br>
 </b>
 <table border="1">
-<tbody>
-<tr>
-    <td><b>Field Name</b></td>
-    <td><b>ID3v1</b></td>
-    <td><b>ID3v1.1</b></td>
-    <td><b>ID3v2.2</b></td>
-    <td><b>ID3v2.3</b></td>
-    <td><b>ID3v2.4</b></td>
-    <td><b>Lyrics3v1</b></td>
-    <td><b>Lyrics3v2</b></td>
-</tr>
-<tr>
-    <td>Song Title</td>
-    <td>title</td>
-    <td>title</td>
-    <td>TT2</td>
-    <td>TIT2</td>
-    <td>TIT2</td>
-    <td>--</td>
-    <td>ETT</td>
-</tr>
-<tr>
-    <td>Lead Artist</td>
-    <td>artist</td>
-    <td>artist</td>
-    <td>TP1</td>
-    <td>TPE1</td>
-    <td>TPE1</td>
-    <td>--</td>
-    <td>EAR</td>
-</tr>
-<tr>
-    <td>Album Title</td>
-    <td>album</td>
-    <td>album</td>
-    <td>TAL</td>
-    <td>TALB</td>
-    <td>TALB</td>
-    <td>--</td>
-    <td>EAL</td>
-</tr>
-<tr>
-    <td>Year Released</td>
-    <td>year</td>
-    <td>year</td>
-    <td>TYE</td>
-    <td>TYER</td>
-    <td>TDRC</td>
-    <td>--</td>
-    <td>--</td>
-</tr>
-<tr>
-    <td>Comment</td>
-    <td>comment</td>
-    <td>comment</td>
-    <td>COM</td>
-    <td>COMM</td>
-    <td>COMM</td>
-    <td>--</td>
-    <td>INF</td>
-</tr>
-<tr>
-    <td>Song Genre</td>
-    <td>genre</td>
-    <td>genre</td>
-    <td>TCO</td>
-    <td>TCON</td>
-    <td>TCON</td>
-    <td>--</td>
-    <td>--</td>
-</tr>
-<tr>
-    <td>Track number on album</td>
-    <td>--</td>
-    <td>track</td>
-    <td>TRK</td>
-    <td>TRCK</td>
-    <td>TRCK</td>
-    <td>--</td>
-    <td>--</td>
-</tr>
-<tr>
-    <td>Lyrics</td>
-    <td>--</td>
-    <td>--</td>
-    <td>SYL or ULT</td>
-    <td>SYLT or USLT</td>
-    <td>SYLT or USLT</td>
-    <td>lyric</td>
-    <td>LYR</td>
-</tr>
-<tr>
-    <td>Author / Composer</td>
-    <td>--</td>
-    <td>--</td>
-    <td>TCM</td>
-    <td>TCOM</td>
-    <td>TCOM</td>
-    <td>--</td>
-    <td>AUT</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td><b>Field Name</b></td>
+        <td><b>ID3v1</b></td>
+        <td><b>ID3v1.1</b></td>
+        <td><b>ID3v2.2</b></td>
+        <td><b>ID3v2.3</b></td>
+        <td><b>ID3v2.4</b></td>
+        <td><b>Lyrics3v1</b></td>
+        <td><b>Lyrics3v2</b></td>
+    </tr>
+    <tr>
+        <td>Song Title</td>
+        <td>title</td>
+        <td>title</td>
+        <td>TT2</td>
+        <td>TIT2</td>
+        <td>TIT2</td>
+        <td>--</td>
+        <td>ETT</td>
+    </tr>
+    <tr>
+        <td>Lead Artist</td>
+        <td>artist</td>
+        <td>artist</td>
+        <td>TP1</td>
+        <td>TPE1</td>
+        <td>TPE1</td>
+        <td>--</td>
+        <td>EAR</td>
+    </tr>
+    <tr>
+        <td>Album Title</td>
+        <td>album</td>
+        <td>album</td>
+        <td>TAL</td>
+        <td>TALB</td>
+        <td>TALB</td>
+        <td>--</td>
+        <td>EAL</td>
+    </tr>
+    <tr>
+        <td>Year Released</td>
+        <td>year</td>
+        <td>year</td>
+        <td>TYE</td>
+        <td>TYER</td>
+        <td>TDRC</td>
+        <td>--</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>Comment</td>
+        <td>comment</td>
+        <td>comment</td>
+        <td>COM</td>
+        <td>COMM</td>
+        <td>COMM</td>
+        <td>--</td>
+        <td>INF</td>
+    </tr>
+    <tr>
+        <td>Song Genre</td>
+        <td>genre</td>
+        <td>genre</td>
+        <td>TCO</td>
+        <td>TCON</td>
+        <td>TCON</td>
+        <td>--</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>Track number on album</td>
+        <td>--</td>
+        <td>track</td>
+        <td>TRK</td>
+        <td>TRCK</td>
+        <td>TRCK</td>
+        <td>--</td>
+        <td>--</td>
+    </tr>
+    <tr>
+        <td>Lyrics</td>
+        <td>--</td>
+        <td>--</td>
+        <td>SYL or ULT</td>
+        <td>SYLT or USLT</td>
+        <td>SYLT or USLT</td>
+        <td>lyric</td>
+        <td>LYR</td>
+    </tr>
+    <tr>
+        <td>Author / Composer</td>
+        <td>--</td>
+        <td>--</td>
+        <td>TCM</td>
+        <td>TCOM</td>
+        <td>TCOM</td>
+        <td>--</td>
+        <td>AUT</td>
+    </tr>
+    </tbody>
 </table>
 
 
-</body></html>
+</body>
+</html>

@@ -21,7 +21,7 @@ public class TestGeneric {
         public <T> String getIt(T cl) {
             if (cl instanceof Integer) {
                 return cl.toString();
-            } else if (cl instanceof String){
+            } else if (cl instanceof String) {
                 return cl.toString();
             }
             return null;

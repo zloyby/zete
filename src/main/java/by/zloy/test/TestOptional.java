@@ -9,8 +9,6 @@ public class TestOptional {
         System.out.println(Optional.ofNullable("1"));
         System.out.println(Optional.ofNullable(null).orElse("false#2"));
         System.out.println(Optional.ofNullable(null));
-
-
     }
 }
 

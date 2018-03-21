@@ -2,6 +2,11 @@ package by.zloy.interview;
 
 public class OverridingAndOverloading {
 
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        new Tester().test(obj);
+    }
+
     public static class Parent {
 
         public void test() {
@@ -27,10 +32,5 @@ public class OverridingAndOverloading {
             System.out.println("Testing child...");
             obj.test();
         }
-    }
-
-    public static void main(String[] args) {
-        Parent obj = new Child();
-        new Tester().test(obj);
     }
 }

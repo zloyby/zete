@@ -11,13 +11,6 @@ import java.util.StringTokenizer;
 
 public class BetterProgrammerTask {
 
-    // Please do not change this interface
-    public static interface Node {
-        int getValue();
-        List<Node> getChildren();
-    }
-
-
     public static int getLargestRootToLeafSum(Node root) {
         /*
           A root-to-leaf path in a tree is a path from a leaf node through all its ancestors
@@ -113,6 +106,13 @@ public class BetterProgrammerTask {
 
     public static void main(String[] args) {
         System.out.println(getRequiredNumberOfBits(5));
+    }
+
+    // Please do not change this interface
+    public static interface Node {
+        int getValue();
+
+        List<Node> getChildren();
     }
 
 }

@@ -9,13 +9,13 @@ public class TestWithInnerClass {
         TestWithInnerClass.StaticInnerClass sic = new TestWithInnerClass.StaticInnerClass();
     }
 
-    //public - I can create from another * classes, default - I can create from another Test* classes, and so on...
-    private class InnerClass {
+    //protected - create from children and from package Test* classes
+    protected static class StaticInnerClass {
 
     }
 
-    //protected - create from children and from package Test* classes
-    protected static class StaticInnerClass {
+    //public - I can create from another * classes, default - I can create from another Test* classes, and so on...
+    private class InnerClass {
 
     }
 }

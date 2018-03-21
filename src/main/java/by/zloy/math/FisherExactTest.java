@@ -2,25 +2,25 @@ package by.zloy.math;
 
 /**
  * Fisher's exact test is the uniformly most powerful test in 2-by-2 table of nonnegative integer values.
- *
+ * <p>
  * Fisher's exact test is a nonparametric statistical test used to test the null hypothesis that no nonrandom
  * associations exist between two categorical variables, against the alternative that
  * there is a nonrandom association between the variables.
- *
+ * <p>
  * Fisher's exact test provides an alternative to the chi-squared test for small samples,
  * or samples with very uneven marginal distributions. Unlike the chi-squared test, Fisher's exact test
  * does not depend on large-sample distribution assumptions, and instead calculates an exact p-value based
  * on the sample data. Although Fisher's exact test is valid for samples of any size, it is not recommended
  * for large samples because it is computationally intensive.
- *
+ * <p>
  * Fisher's exact test is more accurate than the chi-square test of independence when the expected numbers are small,
  * so recommend the chi-square test if your total sample size is greater than 1000.
  */
 public class FisherExactTest {
 
     private static final boolean DEBUG = false;
-    private double[] f;
     int maxSize;
+    private double[] f;
 
 
     /**
@@ -61,6 +61,18 @@ public class FisherExactTest {
 
         }
         System.out.printf("MaxSize %d minP: %g  Count: %d %n", maxSize, minP, count);
+    }
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 9;
+        int c = 11;
+        int d = 3;
+
+        FisherExactTest fisherExact = new FisherExactTest(a + b + c + d + 10);
+        double twoTailedP = fisherExact.getTwoTailedP(a, b, c, d);
+//        System.out.println(twoTailedP);
+        System.out.printf("p: %.9f\n", twoTailedP);
     }
 
     /**
@@ -331,19 +343,6 @@ public class FisherExactTest {
             }
         }
         return p;
-    }
-
-
-    public static void main(String[] args) {
-        int a = 1;
-        int b = 9;
-        int c = 11;
-        int d = 3;
-
-        FisherExactTest fisherExact = new FisherExactTest(a + b + c + d + 10);
-        double twoTailedP = fisherExact.getTwoTailedP(a, b, c, d);
-//        System.out.println(twoTailedP);
-        System.out.printf("p: %.9f\n", twoTailedP);
     }
 }
 

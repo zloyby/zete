@@ -1,18 +1,17 @@
 package by.zloy.mp3;
 
-import org.farng.mp3.MP3File;
-import org.farng.mp3.TagConstant;
-import org.farng.mp3.TagException;
-import org.farng.mp3.TagOptionSingleton;
-import org.farng.mp3.id3.ID3v1;
 import by.zloy.utils.PropertiesUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import org.farng.mp3.MP3File;
+import org.farng.mp3.TagConstant;
+import org.farng.mp3.TagException;
+import org.farng.mp3.TagOptionSingleton;
+import org.farng.mp3.id3.ID3v1;
 
 /**
  * Program to rename mp3 tags and files.

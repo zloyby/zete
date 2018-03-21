@@ -1,6 +1,7 @@
-# My test project
+My tests with Java and Groovy
+============
 
-Just different tests, utilities and questions
+#Just different tests, utilities and questions
 
 ### package by.zloy.certification:
 Some puzzles from sites with coding tasks 

@@ -1,4 +1,4 @@
-package by.zloy.test;
+package by.zloy.test.threads;
 
 public class TestThreadIsExists {
     public static void main(String[] args) {

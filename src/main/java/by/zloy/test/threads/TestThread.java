@@ -1,4 +1,4 @@
-package by.zloy.test;
+package by.zloy.test.threads;
 
 public class TestThread {
     private Object o;

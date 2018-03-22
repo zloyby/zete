@@ -1,20 +1,5 @@
 package by.zloy.test;
 
-// enum showing Mobile prices
-enum TestEnumMobile {
-    Samsung(400), Nokia(250), Motorola(325);
-
-    int price;
-
-    TestEnumMobile(int p) {
-        price = p;
-    }
-
-    int showPrice() {
-        return price;
-    }
-}
-
 public class TestEnum {
 
     public static void main(String args[]) {
@@ -27,5 +12,19 @@ public class TestEnum {
         TestEnumMobile ret;
         ret = TestEnumMobile.valueOf("Samsung");
         System.out.println("Selected : " + ret);
+    }
+
+    enum TestEnumMobile {
+        Samsung(400), Nokia(250), Motorola(325);
+
+        int price;
+
+        TestEnumMobile(int p) {
+            price = p;
+        }
+
+        int showPrice() {
+            return price;
+        }
     }
 }

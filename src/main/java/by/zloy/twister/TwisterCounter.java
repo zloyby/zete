@@ -1,6 +1,6 @@
 package by.zloy.twister;
 
-import by.zloy.utils.Random;
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
@@ -26,8 +26,9 @@ public class TwisterCounter {
     private static Logger logger = LogWrapper.getLogger();
 
     public void startTimerThread() {
-        logger.info("=v=> " + BODY_PARTS[Random.getRandom(4)] + " =2=> "
-                + COLORS[Random.getRandom(4)] + " ");
+        Random r = new Random();
+        int random = r.nextInt(4);
+        logger.info("=v=> " + BODY_PARTS[random] + " =2=> " + COLORS[r.nextInt(4)] + " ");
     }
 
 }

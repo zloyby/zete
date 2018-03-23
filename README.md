@@ -10,7 +10,7 @@ Some puzzles from sites with coding tasks
 My collection of interview questions for jun-mid developers
 
 ### package by.zloy.test
-Just simple tests of intresting or non-usual java tips
+Just simple tests of interesting or non-usual java tips
 
 ### package by.zloy.mp3
 Utilities to change mp3 attributes (add/remove tags)

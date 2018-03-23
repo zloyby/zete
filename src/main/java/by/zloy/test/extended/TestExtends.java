@@ -1,4 +1,4 @@
-package by.zloy.test;
+package by.zloy.test.extended;
 
 /**
  * User: eugene

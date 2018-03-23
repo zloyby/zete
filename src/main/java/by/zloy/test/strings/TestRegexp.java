@@ -1,4 +1,4 @@
-package by.zloy.test;
+package by.zloy.test.strings;
 
 import java.util.regex.Pattern;
 

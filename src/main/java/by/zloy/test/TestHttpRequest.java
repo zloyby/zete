@@ -8,10 +8,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-public class TestGetRequest {
+public class TestHttpRequest {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(new TestGetRequest().execute());
+        System.out.println(new TestHttpRequest().execute());
     }
 
     private String execute() throws IOException {

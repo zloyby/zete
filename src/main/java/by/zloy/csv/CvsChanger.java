@@ -88,7 +88,7 @@ public class CvsChanger {
         writerColumns.close();
     }
 
-    private static class MyCSVWriter implements Closeable {
+    public static class MyCSVWriter implements Closeable {
         public static final int INITIAL_STRING_SIZE = 128;
         /**
          * The character used for escaping quotes.

@@ -15,11 +15,7 @@ import org.farng.mp3.id3.ID3v1;
 
 /**
  * Program to rename mp3 tags and files.
- * You could use it in two cases:
- * 1) mvn compile -Pmp3shuffler
- * 2) java -classpath ./target/classes;./lib/jid3lib/jars/jid3lib-0.5.4.jar by.zloy.mp3.Mp3Shuffler
- *
- * @author EugenKozlov
+ * java -classpath ./target/classes;./lib/jid3lib/jars/jid3lib-0.5.4.jar by.zloy.mp3.Mp3Shuffler
  */
 public class Mp3Shuffler {
 
@@ -85,7 +81,7 @@ public class Mp3Shuffler {
     }
 
     private List<Integer> createListOfNumbers(int size) {
-        List<Integer> listOfRandomValues = new ArrayList<Integer>();
+        List<Integer> listOfRandomValues = new ArrayList<>();
         for (int i = 1; i < size + 1; i++) {
             listOfRandomValues.add(i);
         }

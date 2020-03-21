@@ -5,7 +5,6 @@ import au.com.bytecode.opencsv.CSVWriter;
 import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import by.zloy.apps.csv.CvsChanger;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,7 +28,7 @@ public class PassConvert {
         };
         mapping.setColumnMapping(columns);
 
-        CsvToBean<LP> csvColumn= new CsvToBean<>();
+        CsvToBean<LP> csvColumn = new CsvToBean<>();
         final List<LP> lps = csvColumn.parse(mapping, reader);
 
         File nc = new File("/Users/eugene/Documents/PWDS/kp-NEW.csv");

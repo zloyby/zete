@@ -96,7 +96,7 @@ public class BetterProgrammerTask {
             return arg;
         } else {
             //extract the last char
-            String lastChar = arg.substring(arg.length() - 1, arg.length());
+            String lastChar = arg.substring(arg.length() - 1);
             //extract the remaining chars
             String remainingString = arg.substring(0, arg.length() - 1);
             tmp = lastChar + reverse(remainingString);
@@ -109,7 +109,7 @@ public class BetterProgrammerTask {
     }
 
     // Please do not change this interface
-    public static interface Node {
+    public interface Node {
         int getValue();
 
         List<Node> getChildren();

@@ -5,7 +5,7 @@ public class ToCreateOne {
         System.out.println("Created " + System.currentTimeMillis());
     }
 
-    public void print(){
+    public void print() {
         System.out.println("Print " + this.toString());
     }
 }

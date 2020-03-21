@@ -1,7 +1,6 @@
 package by.zloy.tests.lambda;
 
 import by.zloy.utils.LambdaVisitorUtil;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;

@@ -9,7 +9,7 @@ public class TestGeneric {
         //c.add(new Integer(1)); // Compile time error
 
         List<Number> rawList = new ArrayList();
-        rawList.add(new Integer(1));
+        rawList.add(1);
 
         Getter<Integer> gI = new Getter<Integer>();
         System.out.println(gI.getIt(1));

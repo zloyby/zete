@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 public class RandomShuffleArray {
+
     public static void main(String[] args) {
         Integer[] list = {1, 2, 3, 4, 5, 6, 16, 15, 14, 13, 12, 11};
         Stream.of(list).forEach(x -> System.out.print(x + ","));
@@ -15,20 +16,15 @@ public class RandomShuffleArray {
         shuffled.forEach(x -> System.out.print(x + ","));
 
         // Shuffle by java
-        shuffled = shuffleByJava(list);
+        shuffled = shuffleByJavaCollections(list);
         System.out.println("\r\nShuffled by java:");
         shuffled.forEach(x -> System.out.print(x + ","));
 
         // Just shows 10 random elements
-        System.out.println("\r\nJust random:");
-        new Random().ints(0, list.length).limit(list.length).forEach(p -> System.out.print(list[p] + ","));
-
-    }
-
-    private static List<Integer> shuffleByJava(Integer[] ar) {
-        List<Integer> list = Arrays.asList(ar);
-        Collections.shuffle(list);
-        return list;
+        System.out.println("\r\nJust random elements:");
+        new Random().ints(0, list.length)
+                .limit(list.length)
+                .forEach(p -> System.out.print(list[p] + ","));
     }
 
     private static List<Integer> shuffle(Integer[] ar) {
@@ -40,7 +36,12 @@ public class RandomShuffleArray {
             ar[index] = ar[i];
             ar[i] = a;
         }
-
         return new ArrayList<>(Arrays.asList(ar));
+    }
+
+    private static List<Integer> shuffleByJavaCollections(Integer[] ar) {
+        List<Integer> list = Arrays.asList(ar);
+        Collections.shuffle(list);
+        return list;
     }
 }

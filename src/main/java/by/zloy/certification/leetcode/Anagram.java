@@ -19,14 +19,12 @@ public class Anagram {
             return false;
         }
         int[] arrayS = s.codePoints().sorted().toArray();
-        //int[] array1 = s.chars().sorted().toArray();
         int[] arrayT = t.codePoints().sorted().toArray();
-        //int[] array2 = t.chars().sorted().toArray();
 
         return Arrays.equals(arrayS, arrayT);
     }
 
-    // fails with "яяя"
+    // fails with non-unicode, e.g. "яяя"
     public boolean isAnagram_UsingArrayOfUsedChars_WrongWithUnicode(String s, String t) {
         if (s.length() != t.length()) {
             return false;

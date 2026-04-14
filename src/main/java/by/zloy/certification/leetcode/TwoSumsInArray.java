@@ -11,9 +11,10 @@ public class TwoSumsInArray {
     public static void main(String[] args) {
         TwoSumsInArray test = new TwoSumsInArray();
         int[] nums = {6, 2, 13, 2, 7, 11, 15};  // 9==2+7 : [1, 4] or [3, 4]
-        System.out.println(Arrays.stream(test.twoSum_Two_For_With_Search_Value(nums, 9)).boxed().collect(Collectors.toList()));
-        System.out.println(Arrays.stream(test.twoSum_Sorted_With_Saved_Index(nums, 9)).boxed().collect(Collectors.toList()));
-        System.out.println(Arrays.stream(test.twoSum_HashMap(nums, 9)).boxed().collect(Collectors.toList()));
+        int target = 9;
+        System.out.println(Arrays.stream(test.twoSum_Two_For_With_Search_Value(nums, target)).boxed().collect(Collectors.toList()));
+        System.out.println(Arrays.stream(test.twoSum_Sorted_With_Saved_Index(nums, target)).boxed().collect(Collectors.toList()));
+        System.out.println(Arrays.stream(test.twoSum_HashMap(nums, target)).boxed().collect(Collectors.toList()));
     }
 
     // Time Complexity: O(n^2)

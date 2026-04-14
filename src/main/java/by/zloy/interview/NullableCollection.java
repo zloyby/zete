@@ -1,18 +1,12 @@
 package by.zloy.interview;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-@SuppressWarnings("unchecked")
 public class NullableCollection {
 
-    static Map<String, Integer> map = new HashMap();
-    static Set<Integer> set = new HashSet();
-    static List<String> list = new LinkedList<String>();
+    static Map<String, Integer> map = new HashMap<>();
+    static Set<Integer> set = new HashSet<>();
+    static List<String> list = new LinkedList<>();
 
     public static void main(String[] args) {
         NullableCollection.run();

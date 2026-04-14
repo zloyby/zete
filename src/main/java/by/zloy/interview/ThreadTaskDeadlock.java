@@ -19,24 +19,15 @@ public class ThreadTaskDeadlock {
         }).start();
     }
 
-    static class Friend {
-        private final String name;
-
-        public Friend(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return this.name;
-        }
+    record Friend(String name) {
 
         public synchronized void bow(Friend bower) {
-            System.out.format("%s: %s", this.name, bower.getName());
+            System.out.format("%s: %s", this.name, bower.name());
             bower.bowBack(this);
         }
 
         public synchronized void bowBack(Friend bower) {
-            System.out.format("%s: %s", this.name, bower.getName());
+            System.out.format("%s: %s", this.name, bower.name());
         }
     }
 }

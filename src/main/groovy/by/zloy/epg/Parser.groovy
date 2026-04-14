@@ -4,9 +4,9 @@ import groovy.time.TimeCategory
 
 class Parser {
     public static void main(String[] args) {
-        // HOWTO: compile and run by:
-        // groovyc -cp groovy-all-2.4.1.jar Parser.groovy
-        // java -cp groovy-all-2.4.1.jar:. Parser /Users/eugene/Desktop/epg-generate-day.xml 5 5 1000 9999-Oxagile
+        // Compile and run by:
+        //  groovyc -cp groovy-all-2.4.1.jar Parser.groovy
+        //  java -cp groovy-all-2.4.1.jar:. Parser ~/epg-generate-day.xml 5 5 1000 9999
 
         def to = new File(args[0])
         //'1501-NRK1', '17001-NRK1', '1039-NRK1 HD', '3515-NRK1 HD'

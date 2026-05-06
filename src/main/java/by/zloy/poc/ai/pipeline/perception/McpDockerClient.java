@@ -1,4 +1,4 @@
-package by.zloy.ai.pipeline.perception;
+package by.zloy.poc.ai.pipeline.perception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

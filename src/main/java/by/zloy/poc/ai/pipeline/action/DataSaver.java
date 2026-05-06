@@ -1,4 +1,4 @@
-package by.zloy.ai.pipeline.action;
+package by.zloy.poc.ai.pipeline.action;
 
 public class DataSaver {
 

@@ -1,4 +1,4 @@
-package by.zloy.ai.pipeline.reasoning;
+package by.zloy.poc.ai.pipeline.reasoning;
 
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;

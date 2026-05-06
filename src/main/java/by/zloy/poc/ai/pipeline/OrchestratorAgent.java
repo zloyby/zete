@@ -1,8 +1,8 @@
-package by.zloy.ai.pipeline;
+package by.zloy.poc.ai.pipeline;
 
-import by.zloy.ai.pipeline.action.DataSaver;
-import by.zloy.ai.pipeline.perception.McpDockerClient;
-import by.zloy.ai.pipeline.reasoning.ModelClient;
+import by.zloy.poc.ai.pipeline.action.DataSaver;
+import by.zloy.poc.ai.pipeline.perception.McpDockerClient;
+import by.zloy.poc.ai.pipeline.reasoning.ModelClient;
 
 import java.util.Map;
 

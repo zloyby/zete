@@ -1,13 +1,15 @@
 package by.zloy.poc.threads;
 
 public class TestThreadIsExists {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
         TestThreadIsExistsToRunInBackground t = new TestThreadIsExistsToRunInBackground();
         Thread thread = new Thread(t);
+        //thread.setDaemon(true); // if daemon - exit with application immediately
         System.out.println("Prepare thread");
         thread.start();
         System.out.println("Final string");
-        //System.exit(0); // thread is fucked!
+        //System.exit(0); // if exit(0) - exit with application immediately
     }
 
     static class TestThreadIsExistsToRunInBackground implements Runnable {

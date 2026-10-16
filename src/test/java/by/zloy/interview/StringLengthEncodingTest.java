@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringLengthEncodingTest {
 
-    private StringLengthEncoding stringLengthEncoding = new StringLengthEncoding();
+    private final StringLengthEncoding stringLengthEncoding = new StringLengthEncoding();
 
     @ParameterizedTest
     @NullAndEmptySource

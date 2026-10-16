@@ -1,5 +1,7 @@
 package by.zloy.interview
 
+import by.zloy.interview.BalancedBrackets
+
 assert BalancedBrackets.isBalancedRecursion("()[]{}") == true : "Simple balanced brackets"
 assert BalancedBrackets.isBalancedRecursion("([])") == true : "Nested balanced brackets"
 assert BalancedBrackets.isBalancedRecursion("([)]") == false : "Mismatched nesting"

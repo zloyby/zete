@@ -36,7 +36,7 @@ public class BalancedBrackets {
     }
 
     // The most efficient and industry-standard solution uses a Stack (O(n) time, O(n) space).
-    // This is better than the recursive pair-removal approach (O(n²))
+    // This is better than the recursive pair-removal approach (O(n*n))
     @Testable
     public static boolean isBalanced(String str) {
         Deque<Character> stack = new ArrayDeque<>();

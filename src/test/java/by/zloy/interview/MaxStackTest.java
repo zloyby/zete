@@ -1,15 +1,24 @@
 package by.zloy.interview;
 
 import org.junit.jupiter.api.Test;
+import org.openjdk.jmh.annotations.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.concurrent.TimeUnit;
 
-class MaxStackTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    private MaxStack maxStack = new MaxStack();
+@State(Scope.Benchmark)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@BenchmarkMode(Mode.All)
+public class MaxStackTest {
 
+    private final MaxStack maxStack = new MaxStack();
+
+    @Fork(value = 1, warmups = 1)
+    @Warmup(iterations = 20)
+    @Benchmark
     @Test
-    void getMaxValue() {
+    public void getMaxValue() {
         maxStack.push(1);
         maxStack.push(3);
         maxStack.push(5);

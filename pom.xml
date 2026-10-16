@@ -6,6 +6,23 @@
     <version>0.0.1</version>
     <name>Zloy Tests</name>
 
+    <properties>
+        <!-- mvn plugins -->
+        <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
+        <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+        <!-- compile and test -->
+        <groovy-all.version>6.0.0-alpha-2</groovy-all.version>
+        <jmh-all.version>1.37</jmh-all.version>
+        <!-- runtime -->
+        <jackson-core.version>2.22.1</jackson-core.version>
+        <httpclient.version>4.5.14</httpclient.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <dependency-check-maven.version>12.2.2</dependency-check-maven.version>
+        <junit-all.version>6.1.2</junit-all.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!-- BOM -->
@@ -27,7 +44,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- LOCAL -->
+        <!-- LOCAL JAR -->
         <dependency>
             <groupId>jid3lib</groupId>
             <artifactId>jid3lib</artifactId>
@@ -40,11 +57,22 @@
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>5.0.5</version>
+            <version>${groovy-all.version}</version>
             <type>pom</type>
             <scope>compile</scope>
         </dependency>
 
+        <!-- Versioning -->
+        <!-- mvn versions:display-dependency-updates -->
+        <!-- mvn versions:update-properties -->
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>${versions-maven-plugin.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- AI -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j</artifactId>
@@ -55,6 +83,21 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Benchmarks -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-all.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-all.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Common -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -63,24 +106,24 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>[2.21.2,)</version>
+            <version>${jackson-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>[4.3.6,)</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>[3.6.1,)</version>
+            <version>${commons-math3.version}</version>
         </dependency>
 
-        <!-- CHECK -->
+        <!-- CHECK DEPS -->
         <dependency>
             <groupId>org.owasp</groupId>
             <artifactId>dependency-check-maven</artifactId>
-            <version>12.2.0</version>
+            <version>${dependency-check-maven.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -88,32 +131,50 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>6.0.3</version>
+            <version>${junit-all.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>6.0.3</version>
+            <version>${junit-all.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId> <!--for running parameterized tests-->
-            <version>6.0.3</version>
+            <version>${junit-all.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
+    <!-- BUILD -->
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <skipProvidedScope>true</skipProvidedScope>
+                    <failOnError>false</failOnError>
+                    <failBuildOnCVSS>999</failBuildOnCVSS>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -164,16 +225,23 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.15.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.openjdk.jmh</groupId>
+                            <artifactId>jmh-generator-annprocess</artifactId>
+                            <version>${jmh-all.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifest>

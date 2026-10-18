@@ -24,11 +24,20 @@ public class TwisterCounter {
      * The logger.
      */
     private static Logger logger = LogWrapper.getLogger();
+    private static final String INSTRUCTION_TEMPLATE = "=v=> %s =2=> %s ";
 
     public void startTimerThread() {
         Random r = new Random();
-        int random = r.nextInt(4);
-        logger.info("=v=> " + BODY_PARTS[random] + " =2=> " + COLORS[r.nextInt(4)] + " ");
+        
+        if (BODY_PARTS.length == 0 || COLORS.length == 0) {
+            logger.severe("Cannot generate Twister instruction: Color or Body Parts array is empty.");
+            return;
+        }
+        
+        int bodyIndex = r.nextInt(BODY_PARTS.length);
+        int colorIndex = r.nextInt(COLORS.length);
+        
+        String instruction = String.format(INSTRUCTION_TEMPLATE, BODY_PARTS[bodyIndex], COLORS[colorIndex]);
+        logger.info(instruction);
     }
-
 }

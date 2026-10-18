@@ -1,12 +1,13 @@
+package by.zloy.apps.twister;
+
+import java.util.logging.Logger;
+
 /**
  * Twister game
  */
-package by.zloy.apps.twister;
-
-/**
- * The Class Twister.
- */
 public class Twister {
+
+    private static final Logger logger = LogWrapper.getLogger();
 
     /**
      * Main function of twister.
@@ -14,11 +15,26 @@ public class Twister {
      * @param args command-arguments
      */
     public static void main(final String[] args) {
-        TwisterPropertiesFinder.loadTwisterProperties();
-        TwisterCounter twisterThread = new TwisterCounter();
-        Runnable runnable = new Timer(twisterThread, TwisterPropertiesFinder.breakTime * TwisterPropertiesFinder.quantity);
-        Thread thread = new Thread(runnable);
-        thread.start();
+        try {
+            // 1. Load necessary configuration properties
+            TwisterPropertiesFinder.loadTwisterProperties();
+            logger.info("Twister properties loaded successfully.");
+
+            // 2. Initialize game components
+            TwisterCounter counter = new TwisterCounter();
+            
+            // Calculate the total quantity of turns based on properties
+            int totalTurns = TwisterPropertiesFinder.breakTime * TwisterPropertiesFinder.quantity;
+            
+            // 3. Set up and start the game timer thread
+            Runnable gameRunner = new Timer(counter, totalTurns);
+            Thread thread = new Thread(gameRunner, "TwisterGameThread");
+            thread.start();
+            logger.info("Twister game initiated and running.");
+
+        } catch (Exception e) {
+            logger.severe("Fatal error during Twister game initialization: " + e.getMessage());
+        }
     }
 
 }

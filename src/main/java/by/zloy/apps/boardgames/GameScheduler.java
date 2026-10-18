@@ -2,10 +2,23 @@ package by.zloy.apps.boardgames;
 
 import java.util.*;
 
+/**
+ Every person has his own preferences, and vote for 4 best games for him, first voted game is more important.
+ We want to play X hours (usually 24h), minimizing the time of inactivity.
+ Every game has a time in hours - for how long prolonged.
+ Every game has a maximum number of gamers, who can play at the same time.
+ Player cannot play a lot of games at the same period of time, only one game, so there are no overlaps.
+ Need to find optimal match between person and game, to satisfy most persons per their votes.
+
+ The result should be like:
+ Person1 (he likes Game1, Game2, Game3, Game4) - plays Game1 from 0:00 till 12:00; Game2 from 12:00 till 14:00; Game3 from 16:00 till 22:00 = total is 22 hours
+ Person2 (he likes Game1, Game5, Game4, Game3) - plays Game1 from 0:00 till 12:00; Game4 from 12:00 till 15:00; Game3 from 16:00 till 22:00 = total is 23 hours
+ ... and so on.
+ */
 public class GameScheduler {
 
     public enum Game {
-        NEMEZIDA("Немезида", 5, "3–5 часов"),
+        NEMESIS("Немезида", 5, "3–5 часов"),
         DUNE("Дюна", 6, "3–5 часов"),
         MANSIONS("Особняки безумия", 5, "3–5 часов"),
         DRACULA("Дракула", 5, "3–5 часов"),
@@ -41,127 +54,178 @@ public class GameScheduler {
         }
 
         public int getMaxDurationHours() {
-            // Парсит максимальное значение из строки вроде "3–5 часов"
-            try {
-                String[] parts = duration.split("–");
-                String maxPart = parts[1].replaceAll("[^\\d.]", ""); // Удалить "часов"
-                return Integer.parseInt(maxPart);
-            } catch (Exception e) {
-                return 0; // безопасный фоллбэк
+            // Simplification: assuming the number before the first dash/space is the minimum duration in hours.
+            // E.g., "3–5 часов" -> 3, "1.5–3 часа" -> 1
+            String cleanDuration = this.duration.split("–")[0].trim().replaceAll("\\s+", "");
+            if (cleanDuration.contains(".")) {
+                // Handle fractional hours (e.g., 1.5 hours) by rounding up to ensure time slot reservation is conservative
+                return (int) Math.ceil(Double.parseDouble(cleanDuration));
             }
+            return Integer.parseInt(cleanDuration);
         }
     }
 
+    // --- ADDED: Custom Person class for preferences ---
     static class Person {
-        String name;
-        List<Game> chosenGames;
+        private final String name;
+        private final List<Game> preferences; // Ranked preferences (Rank 1 is highest)
 
-        Person(String name, List<Game> chosenGames) {
+        public Person(String name, List<Game> preferences) {
             this.name = name;
-            this.chosenGames = chosenGames;
+            this.preferences = preferences;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public List<Game> getPreferences() {
+            return preferences;
         }
     }
 
+    // --- ADDED: Custom Session class to track time slots ---
     static class Session {
-        Game game;
-        List<String> players;
-        int slot;
+        private final String gameName;
+        private final Game game;
+        private final int startTime;
+        private final int endTime;
+        private final List<Person> participants;
 
-        Session(Game game, List<String> players, int slot) {
+        public Session(String gameName, Game game, int startTime, int endTime, List<Person> participants) {
+            this.gameName = gameName;
             this.game = game;
-            this.players = players;
-            this.slot = slot;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.participants = participants;
         }
+
+        public String getGameName() { return gameName; }
+        public Game getGame() { return game; }
+        public int getStartTime() { return startTime; }
+        public int getEndTime() { return endTime; }
+        public List<Person> getParticipants() { return participants; }
     }
+
 
     public static void main(String[] args) {
-        List<Person> people = Arrays.asList(
-                new Person("Стас", Arrays.asList(Game.DUNE, Game.MARS, Game.GOT, Game.DRACULA)),
-                new Person("Олег", Arrays.asList(Game.CRYO, Game.DUNE, Game.MARS, Game.MANSIONS)),
-                new Person("Никита", Arrays.asList(Game.NEMEZIDA, Game.DRACULA, Game.MANSIONS, Game.DUNE)),
-                new Person("Кирилл", Arrays.asList(Game.TZOLKIN, Game.DRACULA, Game.MARS, Game.THROUGH_THE_AGES)),
-                new Person("Эд", Arrays.asList(Game.NEMEZIDA, Game.CRYO, Game.GOT, Game.DUNE)),
-                new Person("Илья", Arrays.asList(Game.NEMEZIDA, Game.DUNGEON_PETS, Game.THROUGH_THE_AGES, Game.TZOLKIN)),
-                new Person("Антон", Arrays.asList(Game.NEMEZIDA, Game.ROOT, Game.DUNGEON_PETS, Game.DUNE)),
-                new Person("Женя", Arrays.asList(Game.NEMEZIDA, Game.INIS, Game.MANSIONS, Game.DRACULA))
-        );
+        // 1. Define People and Preferences (SAMPLE DATA for demonstration)
+        // NOTE: Since actual input data for people preferences was not provided, sample data is used to demonstrate the scheduling logic.
+        List<Person> people = new ArrayList<>();
+        // Person1: NEMEZIDA (Rank 1) > DUNE (Rank 2) > MANSIONS (Rank 3) > DRACULA (Rank 4)
+        people.add(new Person("Person1", Arrays.asList(Game.NEMESIS, Game.DUNE, Game.MANSIONS, Game.DRACULA)));
+        // Person2: DUNE (Rank 1) > NEMEZIDA (Rank 2) > MANSIONS (Rank 3) > CRYO (Rank 4)
+        people.add(new Person("Person2", Arrays.asList(Game.DUNE, Game.NEMESIS, Game.MANSIONS, Game.CRYO)));
+        // Person3: DRACULA (Rank 1) > NEMEZIDA (Rank 2) > DUNE (Rank 3) > MANSIONS (Rank 4)
+        people.add(new Person("Person3", Arrays.asList(Game.DRACULA, Game.NEMESIS, Game.DUNE, Game.MANSIONS)));
 
-        Map<String, Set<Integer>> personToSlots = new HashMap<>();
-        for (Person p : people) {
-            personToSlots.put(p.name, new HashSet<Integer>());
+        // 2. Initialization
+        int totalHours = 24;
+        
+        // Maps Game -> List of allocated sessions
+        Map<Game, List<Session>> gameSchedules = new HashMap<>();
+        // Tracks player availability: Person -> Set of occupied time slots (hours 0-23)
+        Map<Person, Set<Integer>> playerAvailability = new HashMap<>();
+
+        for (Game game : Game.values()) {
+            gameSchedules.put(game, new ArrayList<>());
         }
-
-        Map<Game, List<String>> gameToPlayers = new HashMap<>();
-        for (Person p : people) {
-            for (Game game : p.chosenGames) {
-                if (!gameToPlayers.containsKey(game)) {
-                    gameToPlayers.put(game, new ArrayList<String>());
-                }
-                gameToPlayers.get(game).add(p.name);
+        for (Person person : people) {
+            playerAvailability.put(person, new HashSet<>());
+        }
+        
+        // 3. Scheduling Loop (Greedy prioritization: Person Rank 1, then Game Capacity, then Time)
+        // Iterate through every possible start hour slot (0 to 23)
+        for (int startTime = 0; startTime < totalHours; startTime++) {
+            
+            // Potential assignment for this time slot: Map<Game, List<Person>>
+            Map<Game, List<Person>> potentialGameAssignments = new HashMap<>();
+            for (Game game : Game.values()) {
+                potentialGameAssignments.put(game, new ArrayList<>());
             }
-        }
-
-        List<Session> allSessions = new ArrayList<>();
-        int slotCounter = 1;
-
-        for (Map.Entry<Game, List<String>> entry : gameToPlayers.entrySet()) {
-            Game game = entry.getKey();
-            List<String> players = new ArrayList<>(entry.getValue());
-            Set<String> assigned = new HashSet<>();
-
-            while (assigned.size() < players.size()) {
-                List<String> group = new ArrayList<>();
-                int slot = slotCounter++;
-
-                for (String player : players) {
-                    if (assigned.contains(player)) continue;
-                    if (group.size() >= game.getMaxPlayers()) break;
-
-                    Set<Integer> usedSlots = personToSlots.get(player);
-                    if (!usedSlots.contains(slot)) {
-                        boolean conflict = false;
-                        for (String p : group) {
-                            if (personToSlots.get(p).contains(slot)) {
-                                conflict = true;
-                                break;
+            
+            // Check each person to find their highest ranked, available game at this time
+            for (Person person : people) {
+                
+                for (Game preferredGame : person.getPreferences()) {
+                    
+                    int duration = preferredGame.getMaxDurationHours();
+                    int endTime = startTime + duration;
+                    
+                    // Check time constraints (must finish within 24h) and player availability
+                    if (endTime <= totalHours && !playerAvailability.get(person).contains(startTime)) {
+                        
+                        // Capacity Check: Count running instances that overlap with startTime
+                        int currentInstances = 0;
+                        for(Session session : gameSchedules.get(preferredGame)) {
+                            // Overlap occurs if session starts before or at startTime AND ends after startTime
+                            if (session.getStartTime() <= startTime && session.getEndTime() > startTime) {
+                                currentInstances++;
                             }
                         }
-                        if (!conflict) {
-                            group.add(player);
-                            assigned.add(player);
-                            personToSlots.get(player).add(slot);
+                        
+                        // If capacity allows
+                        if (currentInstances < preferredGame.getMaxPlayers()) {
+                            potentialGameAssignments.get(preferredGame).add(person);
+                            break; // Person is assigned to their highest ranked available game
                         }
                     }
                 }
+            }
 
-                if (!group.isEmpty()) {
-                    allSessions.add(new Session(game, group, slot));
+            // 4. Commit Assignments for this time slot
+            for (Game game : Game.values()) {
+                List<Person> playersForGame = potentialGameAssignments.get(game);
+
+                if (!playersForGame.isEmpty()) {
+                    
+                    int duration = game.getMaxDurationHours();
+                    
+                    Session newSession = new Session(
+                        game.getDisplayName(), 
+                        game, 
+                        startTime, 
+                        startTime + duration, 
+                        playersForGame
+                    );
+                    
+                    gameSchedules.get(game).add(newSession);
+                    
+                    // Mark all involved people as busy for the duration
+                    for (Person person : playersForGame) {
+                        for (int t = startTime; t < startTime + duration; t++) {
+                            playerAvailability.get(person).add(t);
+                        }
+                    }
                 }
             }
         }
 
-        // Группировка по играм
-        Map<Game, Set<String>> outputByGame = new HashMap<>();
-        for (Session session : allSessions) {
-            outputByGame.computeIfAbsent(session.game, k -> new LinkedHashSet<>()).addAll(session.players);
-        }
+        // 5. Generate Output
+        System.out.println("\n--- Optimal Game Schedule (24 Hours) ---");
+        
+        for (Person person : people) {
+            // Filter sessions for this person
+            List<Session> personSessions = gameSchedules.values().stream()
+                    .flatMap(List::stream)
+                    .filter(s -> s.getParticipants().contains(person))
+                    .toList();
 
-        // Сортировка по количеству игроков и макс. времени
-        List<Map.Entry<Game, Set<String>>> sorted = new ArrayList<>(outputByGame.entrySet());
-        Collections.sort(sorted, new Comparator<Map.Entry<Game, Set<String>>>() {
-            @Override
-            public int compare(Map.Entry<Game, Set<String>> o1, Map.Entry<Game, Set<String>> o2) {
-                int cmpPlayers = Integer.compare(o2.getValue().size(), o1.getValue().size());
-                if (cmpPlayers != 0) return cmpPlayers;
-                return Integer.compare(o2.getKey().getMaxDurationHours(), o1.getKey().getMaxDurationHours());
-            }
-        });
-
-        // Вывод
-        System.out.println("Распределение по играм (сортировка по количеству игроков и длительности):\n");
-        for (Map.Entry<Game, Set<String>> entry : sorted) {
-            System.out.println(entry.getKey().getDisplayName() + " (" + entry.getKey().getDuration() + ") – " +
-                    String.join(", ", entry.getValue()) + " ;");
+            double totalHoursOfPerson = personSessions.stream()
+                    .mapToDouble(s -> s.getEndTime() - s.getStartTime())
+                    .sum();
+            
+            System.out.printf("\n%s (Total Hours: %.1f)\n", person.getName(), totalHoursOfPerson);
+            
+            // Sort sessions by start time for clean output
+            personSessions.stream()
+                    .sorted(Comparator.comparingInt(Session::getStartTime))
+                    .forEach(session -> {
+                        System.out.printf("  - Plays %s from %02d:00 till %02d:00\n", 
+                            session.getGameName(), 
+                            session.getStartTime(), 
+                            session.getEndTime());
+                    });
         }
     }
 }
